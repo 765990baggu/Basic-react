@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "This is Namaste React by Rambabu",
   "scripts": {
+    "start":"parcel index.html",
+    "build":"parcel build index.html",
     "test": "jest"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/765990baggu/Basic-react.git"
