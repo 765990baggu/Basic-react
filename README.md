@@ -61,3 +61,10 @@ import {Component} from "path";
 
 - Client Side Routing
 - Server Side Routing
+
+# class Base Component imported 2 types
+
+- class Base components of "React.component" some developers imported as default
+  -import React from "react"
+  - class Base components of "React.component" some developers imported as Named imorted
+- import {Component} from "react"
