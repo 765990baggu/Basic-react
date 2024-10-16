@@ -6,15 +6,15 @@ const RestaurantMenu = () => {
   console.log(resId);
   const resinfo = useRestaurantmenu(resId);
   if (resinfo === null) return <Shimmer />;
-  let { name, cuisines, avgRating, costForTwoMessage } =
+  const { name, cuisines, avgRating, costForTwoMessage } =
     resinfo?.data?.cards[2]?.card?.card?.info;
   const { itemCards } =
     resinfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card
       ?.card;
   console.log(itemCards);
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className="m-3">
+      <h1 className="font-bold text-lg">{name}</h1>
       <h3>{cuisines.join(",")}</h3>
       <p>
         {avgRating} . {costForTwoMessage}

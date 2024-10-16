@@ -39,9 +39,10 @@ const Body = () => {
   }
   return (
     <div className="bodycontainer">
-      <div className="buttons-container">
+      <div className="flex">
         <div className="inputcontainer">
           <input
+            className="border border-solid border-black m-3 rounded-md"
             type="text"
             value={SearchText}
             onChange={(e) => {
@@ -49,7 +50,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="p-1 rounded-md bg-green-200"
             onClick={() => {
               //Filter the Restaurantcards and update the UI
               //SearchBox
@@ -63,7 +64,7 @@ const Body = () => {
             search
           </button>
         </div>
-        <div className="filter">
+        <div className="h-10 w-15 flex items-center m-1 px-1 rounded-md bg-slate-100">
           <button
             className="filter-btn"
             onClick={() => {
@@ -77,7 +78,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="restaurantcontainer">
+      <div className="flex flex-wrap">
         {Filteredrestaurant.map((restaurant) => (
           <Link
             key={restaurant?.info?.id}
