@@ -1,9 +1,10 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { PromotedLabel } from "./RestaurantCard";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useonlinestatus from "../utils/useonlinestatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [ListofRestaurant, setofrestaurant] = useState([]);
@@ -32,11 +33,13 @@ const Body = () => {
   const onlinestatus = useonlinestatus();
   if (onlinestatus === false)
     return <h1>you are offline!! please check your internet..</h1>;
-
+  const { LoggedInUser, setusername } = useContext(UserContext);
   // Conditional Rendering
   if (ListofRestaurant?.length === 0) {
     return <Shimmer />;
   }
+  const RestaurantCardPromoted = PromotedLabel(RestaurantCard);
+
   return (
     <div className="bodycontainer">
       <div className="flex">
@@ -77,6 +80,14 @@ const Body = () => {
             Top RatedRestaurants
           </button>
         </div>
+        <div className="flex mx-2">
+          <label className="my-1">Username:</label>
+          <input
+            className="border border-solid border-black h-10 w-15 rounded-md text-center"
+            value={LoggedInUser}
+            onChange={(e) => setusername(e.target.value)}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap">
         {Filteredrestaurant.map((restaurant) => (
@@ -84,7 +95,11 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurants/" + restaurant?.info?.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant?.info?.avgRating > 4.3 ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
