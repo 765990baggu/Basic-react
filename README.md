@@ -68,3 +68,12 @@ import {Component} from "path";
   -import React from "react"
   - class Base components of "React.component" some developers imported as Named imorted
 - import {Component} from "react"
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch(action)
+- Selector
