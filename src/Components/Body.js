@@ -45,6 +45,7 @@ const Body = () => {
       <div className="flex">
         <div className="inputcontainer">
           <input
+            data-testid="searchInput"
             className="border border-solid border-black m-3 rounded-md"
             type="text"
             value={SearchText}
@@ -72,8 +73,9 @@ const Body = () => {
             className="filter-btn"
             onClick={() => {
               const filterList = ListofRestaurant.filter(
-                (res) => res.data.avgRating > 4
+                (res) => res.info.avgRating > 4.5
               );
+              console.log(filterList);
               setofrestaurant(filterList);
             }}
           >
